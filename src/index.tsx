@@ -1,19 +1,45 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { StrictMode } from "react";
+import * as ReactDOMClient from "react-dom/client";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import "tailwindcss/tailwind.css";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+const root = ReactDOMClient.createRoot(rootElement);
+const queryClient = new QueryClient();
 root.render(
-  <React.StrictMode>
+  <StrictMode>
+  <QueryClientProvider client={queryClient}>
     <App />
-  </React.StrictMode>
+    </QueryClientProvider>
+  </StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+(window as any).tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        'normal': '#ADA594',
+        'fighting': '#A55139',
+        'flying': '#9CACF6',
+        'poison': '#95588A',
+        'rock': '#BDA55A',
+        'bug': '#ADBD20',
+        'psychic': '#FA75A5',
+        'ground': '#D6B65C',
+        'ghost': '#6363B5',
+        'steel': '#ADADC6',
+        'electric': '#FFC631',
+        'dragon': '#775FDF',
+        'dark': '#735A4A',
+        'fairy': '#F7B5F7',
+        'grass': '#7BCE52',
+        'ice': '#5ACDE7',
+        'fire': '#F75131',
+        'water': '#399CFF',
+      },
+    },
+  },
+};
